@@ -1,0 +1,24 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model puzzle {
+  id              String @id
+  fen             String
+  moves           String
+  rating          Int
+  ratingDeviation Int    @map("rating_deviation")
+  popularity      Int
+  nbPlays         Int    @map("nb_plays")
+  themes          String
+  gameUrl         String @map("game_url")
+  openingTags     String @map("opening_tags")
+}

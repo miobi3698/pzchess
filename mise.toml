@@ -1,0 +1,4 @@
+[tools]
+node = "latest"
+sqlite = "latest"
+pnpm = "latest"
