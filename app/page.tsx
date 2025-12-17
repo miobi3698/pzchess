@@ -1,34 +1,11 @@
-"use client";
-
-import { useState } from "react";
-import { Chessboard } from "react-chessboard";
-import { Chess } from "chess.js";
+import NextPuzzle from "../components/NextPuzzle";
 
 export default function Home() {
-  const [game] = useState(new Chess());
-  const [position, setPosition] = useState(game.fen());
-
   return (
-    <main>
+    <main className="flex flex-col gap-1">
       <h1 className="text-xl">PzChess</h1>
-      <Chessboard
-        options={{
-          position,
-          onPieceDrop({ sourceSquare, targetSquare }) {
-            if (!targetSquare) {
-              return false;
-            }
-
-            try {
-              game.move({ from: sourceSquare, to: targetSquare });
-              setPosition(game.fen());
-              return true;
-            } catch {
-              return false;
-            }
-          },
-        }}
-      />
+      <p>A chess puzzle trainer</p>
+      <NextPuzzle />
     </main>
   );
 }
